@@ -2,7 +2,33 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        @*<h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Producto</h3>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Pricetype" asp-action="Index">Price Type</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Productbrand" asp-action="Index">Product Brand</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Productpresentation" asp-action="Index">Product Presentation</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Producttype" asp-action="Index">Product Type</a></p>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Veh&iacute;culo</h3>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Vehicle" asp-action="Index">Vehicle</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Vehiclecategory" asp-action="Index">Vehicle Category</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Vehicleengine" asp-action="Index">Vehicle Engine</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Vehiclemanufacturer" asp-action="Index">Vehicle Manufacturer</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Vehiclemodel" asp-action="Index">Vehicle Model</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Vehicletype" asp-action="Index">Vehicle Type</a></p>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Motor</h3>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Enginecubiccentimeter" asp-action="Index">Engine Cubic Centimeter</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Enginecylinderarrangement" asp-action="Index">Engine Cylinder Arrangement</a></p>
+                    <p><a class="nav-link text-dark" asp-area="" asp-controller="Engineliter" asp-action="Index">Engine Liter</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
