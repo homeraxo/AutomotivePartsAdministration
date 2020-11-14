@@ -27,7 +27,7 @@ namespace AutomotivePartsAdministration
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<automotiveparts2Context>(options =>
+            services.AddDbContext<automotivepartsContext>(options =>
                 options.UseMySql(
                     Configuration.GetConnectionString("DefaultConnection")));
         }
@@ -56,16 +56,13 @@ namespace AutomotivePartsAdministration
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Enginecubiccentimeter}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");                
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Enginecylinderarrangement}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Engineliter}/{action=Index}/{id?}");
+                    pattern: "{controller=Enginesize}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Pricetype}/{action=Index}/{id?}");

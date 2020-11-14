@@ -11,9 +11,9 @@ namespace AutomotivePartsAdministration.Controllers
 {
     public class ProducttypeController : Controller
     {
-        private readonly automotiveparts2Context _context;
+        private readonly automotivepartsContext _context;
 
-        public ProducttypeController(automotiveparts2Context context)
+        public ProducttypeController(automotivepartsContext context)
         {
             _context = context;
         }

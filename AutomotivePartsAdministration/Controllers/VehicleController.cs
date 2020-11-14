@@ -11,9 +11,9 @@ namespace AutomotivePartsAdministration.Controllers
 {
     public class VehicleController : Controller
     {
-        private readonly automotiveparts2Context _context;
+        private readonly automotivepartsContext _context;
 
-        public VehicleController(automotiveparts2Context context)
+        public VehicleController(automotivepartsContext context)
         {
             _context = context;
         }
@@ -21,8 +21,8 @@ namespace AutomotivePartsAdministration.Controllers
         // GET: Vehicle
         public async Task<IActionResult> Index()
         {
-            var automotiveparts2Context = _context.Vehicle.Include(v => v.VehicleCategory).Include(v => v.VehicleEngine).Include(v => v.VehicleManufacturer).Include(v => v.VehicleModel).Include(v => v.VehicleType);
-            return View(await automotiveparts2Context.ToListAsync());
+            var automotivepartsContext = _context.Vehicle.Include(v => v.VehicleCategory).Include(v => v.VehicleEngine).Include(v => v.VehicleManufacturer).Include(v => v.VehicleModel).Include(v => v.VehicleType);
+            return View(await automotivepartsContext.ToListAsync());
         }
 
         // GET: Vehicle/Details/5
@@ -64,7 +64,7 @@ namespace AutomotivePartsAdministration.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VehicleId,Version,Cylinders,BeginYear,EndYear,EngineOilCapacity,Description,ImagePath,Link,SearchVehicle,IsActive,VehicleManufacturerId,VehicleModelId,VehicleCategoryId,VehicleEngineId,VehicleTypeId,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Vehicle vehicle)
+        public async Task<IActionResult> Create([Bind("VehicleId,Version,BeginYear,EndYear,EngineOilCapacity,Description,ImagePath,Link,SearchVehicle,IsActive,VehicleManufacturerId,VehicleModelId,VehicleCategoryId,VehicleEngineId,VehicleTypeId,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -106,7 +106,7 @@ namespace AutomotivePartsAdministration.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VehicleId,Version,Cylinders,BeginYear,EndYear,EngineOilCapacity,Description,ImagePath,Link,SearchVehicle,IsActive,VehicleManufacturerId,VehicleModelId,VehicleCategoryId,VehicleEngineId,VehicleTypeId,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Vehicle vehicle)
+        public async Task<IActionResult> Edit(int id, [Bind("VehicleId,Version,BeginYear,EndYear,EngineOilCapacity,Description,ImagePath,Link,SearchVehicle,IsActive,VehicleManufacturerId,VehicleModelId,VehicleCategoryId,VehicleEngineId,VehicleTypeId,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Vehicle vehicle)
         {
             if (id != vehicle.VehicleId)
             {

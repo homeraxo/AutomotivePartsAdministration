@@ -8,9 +8,10 @@ namespace AutomotivePartsAdministration.automotiveparts
         public int VehicleServiceId { get; set; }
         public int VehicleId { get; set; }
         public int SaleId { get; set; }
-        public string NextService { get; set; }
-        public string Kilometers { get; set; }
+        public string CurrentUnits { get; set; }
         public string Description { get; set; }
+        public DateTime? NextServiceDate { get; set; }
+        public string NextServiceUnits { get; set; }
         public bool? IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }

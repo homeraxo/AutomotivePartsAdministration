@@ -6,7 +6,7 @@ namespace AutomotivePartsAdministration.automotiveparts
     public partial class Partycontactrelationship
     {
         public int PartyContactRelationshipId { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
         public bool? IsActive { get; set; }
         public int PartyId { get; set; }
         public int ContactTypeId { get; set; }

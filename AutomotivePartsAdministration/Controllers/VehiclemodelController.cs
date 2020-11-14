@@ -11,9 +11,9 @@ namespace AutomotivePartsAdministration.Controllers
 {
     public class VehiclemodelController : Controller
     {
-        private readonly automotiveparts2Context _context;
+        private readonly automotivepartsContext _context;
 
-        public VehiclemodelController(automotiveparts2Context context)
+        public VehiclemodelController(automotivepartsContext context)
         {
             _context = context;
         }
@@ -21,8 +21,8 @@ namespace AutomotivePartsAdministration.Controllers
         // GET: Vehiclemodel
         public async Task<IActionResult> Index()
         {
-            var automotiveparts2Context = _context.Vehiclemodel.Include(v => v.VehicleManufacturer);
-            return View(await automotiveparts2Context.ToListAsync());
+            var automotivepartsContext = _context.Vehiclemodel.Include(v => v.VehicleManufacturer);
+            return View(await automotivepartsContext.ToListAsync());
         }
 
         // GET: Vehiclemodel/Details/5

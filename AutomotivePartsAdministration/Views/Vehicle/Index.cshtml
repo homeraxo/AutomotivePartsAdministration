@@ -10,14 +10,11 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table-responsive-sm small">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Version)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cylinders)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BeginYear)
@@ -78,9 +75,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Version)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cylinders)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BeginYear)

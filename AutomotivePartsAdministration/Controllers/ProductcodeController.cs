@@ -9,22 +9,22 @@ using AutomotivePartsAdministration.automotiveparts;
 
 namespace AutomotivePartsAdministration.Controllers
 {
-    public class EnginecubiccentimeterController : Controller
+    public class ProductcodeController : Controller
     {
-        private readonly automotiveparts2Context _context;
+        private readonly automotivepartsContext _context;
 
-        public EnginecubiccentimeterController(automotiveparts2Context context)
+        public ProductcodeController(automotivepartsContext context)
         {
             _context = context;
         }
 
-        // GET: Enginecubiccentimeter
+        // GET: Productcode
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Enginecubiccentimeters.ToListAsync());
+            return View(await _context.Productcode.ToListAsync());
         }
 
-        // GET: Enginecubiccentimeter/Details/5
+        // GET: Productcode/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace AutomotivePartsAdministration.Controllers
                 return NotFound();
             }
 
-            var enginecubiccentimeters = await _context.Enginecubiccentimeters
-                .FirstOrDefaultAsync(m => m.EngineCubicCentimetersId == id);
-            if (enginecubiccentimeters == null)
+            var productcode = await _context.Productcode
+                .FirstOrDefaultAsync(m => m.ProductCodeId == id);
+            if (productcode == null)
             {
                 return NotFound();
             }
 
-            return View(enginecubiccentimeters);
+            return View(productcode);
         }
 
-        // GET: Enginecubiccentimeter/Create
+        // GET: Productcode/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Enginecubiccentimeter/Create
+        // POST: Productcode/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EngineCubicCentimetersId,Name,Description,IsActive,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Enginecubiccentimeters enginecubiccentimeters)
+        public async Task<IActionResult> Create([Bind("ProductCodeId,Name,IsActive,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Productcode productcode)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(enginecubiccentimeters);
+                _context.Add(productcode);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(enginecubiccentimeters);
+            return View(productcode);
         }
 
-        // GET: Enginecubiccentimeter/Edit/5
+        // GET: Productcode/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace AutomotivePartsAdministration.Controllers
                 return NotFound();
             }
 
-            var enginecubiccentimeters = await _context.Enginecubiccentimeters.FindAsync(id);
-            if (enginecubiccentimeters == null)
+            var productcode = await _context.Productcode.FindAsync(id);
+            if (productcode == null)
             {
                 return NotFound();
             }
-            return View(enginecubiccentimeters);
+            return View(productcode);
         }
 
-        // POST: Enginecubiccentimeter/Edit/5
+        // POST: Productcode/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EngineCubicCentimetersId,Name,Description,IsActive,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Enginecubiccentimeters enginecubiccentimeters)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductCodeId,Name,IsActive,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Productcode productcode)
         {
-            if (id != enginecubiccentimeters.EngineCubicCentimetersId)
+            if (id != productcode.ProductCodeId)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace AutomotivePartsAdministration.Controllers
             {
                 try
                 {
-                    _context.Update(enginecubiccentimeters);
+                    _context.Update(productcode);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EnginecubiccentimetersExists(enginecubiccentimeters.EngineCubicCentimetersId))
+                    if (!ProductcodeExists(productcode.ProductCodeId))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace AutomotivePartsAdministration.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(enginecubiccentimeters);
+            return View(productcode);
         }
 
-        // GET: Enginecubiccentimeter/Delete/5
+        // GET: Productcode/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace AutomotivePartsAdministration.Controllers
                 return NotFound();
             }
 
-            var enginecubiccentimeters = await _context.Enginecubiccentimeters
-                .FirstOrDefaultAsync(m => m.EngineCubicCentimetersId == id);
-            if (enginecubiccentimeters == null)
+            var productcode = await _context.Productcode
+                .FirstOrDefaultAsync(m => m.ProductCodeId == id);
+            if (productcode == null)
             {
                 return NotFound();
             }
 
-            return View(enginecubiccentimeters);
+            return View(productcode);
         }
 
-        // POST: Enginecubiccentimeter/Delete/5
+        // POST: Productcode/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var enginecubiccentimeters = await _context.Enginecubiccentimeters.FindAsync(id);
-            _context.Enginecubiccentimeters.Remove(enginecubiccentimeters);
+            var productcode = await _context.Productcode.FindAsync(id);
+            _context.Productcode.Remove(productcode);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EnginecubiccentimetersExists(int id)
+        private bool ProductcodeExists(int id)
         {
-            return _context.Enginecubiccentimeters.Any(e => e.EngineCubicCentimetersId == id);
+            return _context.Productcode.Any(e => e.ProductCodeId == id);
         }
     }
 }

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AutomotivePartsAdministration.automotiveparts
 {
-    public partial class automotiveparts2Context : DbContext
+    public partial class automotivepartsContext : DbContext
     {
-        public automotiveparts2Context()
+        public automotivepartsContext()
         {
         }
 
-        public automotiveparts2Context(DbContextOptions<automotiveparts2Context> options)
+        public automotivepartsContext(DbContextOptions<automotivepartsContext> options)
             : base(options)
         {
         }
@@ -18,9 +18,8 @@ namespace AutomotivePartsAdministration.automotiveparts
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Classification> Classification { get; set; }
         public virtual DbSet<Contacttype> Contacttype { get; set; }
-        public virtual DbSet<Enginecubiccentimeters> Enginecubiccentimeters { get; set; }
         public virtual DbSet<Enginecylinderarrangement> Enginecylinderarrangement { get; set; }
-        public virtual DbSet<Engineliter> Engineliter { get; set; }
+        public virtual DbSet<Enginesize> Enginesize { get; set; }
         public virtual DbSet<Expense> Expense { get; set; }
         public virtual DbSet<Historicalprice> Historicalprice { get; set; }
         public virtual DbSet<Party> Party { get; set; }
@@ -57,7 +56,7 @@ namespace AutomotivePartsAdministration.automotiveparts
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=localhost;port=3306;user=root;password=toor;database=automotiveparts2", x => x.ServerVersion("8.0.19-mysql"));
+                optionsBuilder.UseMySql("server=localhost;port=3306;user=root;password=toor;database=automotiveparts", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
 
@@ -216,48 +215,6 @@ namespace AutomotivePartsAdministration.automotiveparts
                     .HasCollation("utf8_general_ci");
             });
 
-            modelBuilder.Entity<Enginecubiccentimeters>(entity =>
-            {
-                entity.ToTable("enginecubiccentimeters");
-
-                entity.Property(e => e.EngineCubicCentimetersId).HasColumnName("EngineCubicCentimetersID");
-
-                entity.Property(e => e.CreatedAt)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                entity.Property(e => e.CreatedBy)
-                    .IsRequired()
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.Description)
-                    .HasColumnType("varchar(200)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.IsActive)
-                    .IsRequired()
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.UpdatedAt)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                    .ValueGeneratedOnAddOrUpdate();
-
-                entity.Property(e => e.UpdatedBy)
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-            });
-
             modelBuilder.Entity<Enginecylinderarrangement>(entity =>
             {
                 entity.ToTable("enginecylinderarrangement");
@@ -300,11 +257,11 @@ namespace AutomotivePartsAdministration.automotiveparts
                     .HasCollation("utf8_general_ci");
             });
 
-            modelBuilder.Entity<Engineliter>(entity =>
+            modelBuilder.Entity<Enginesize>(entity =>
             {
-                entity.ToTable("engineliter");
+                entity.ToTable("enginesize");
 
-                entity.Property(e => e.EngineLiterId).HasColumnName("EngineLiterID");
+                entity.Property(e => e.EngineSizeId).HasColumnName("EngineSizeID");
 
                 entity.Property(e => e.CreatedAt)
                     .HasColumnType("datetime")
@@ -313,6 +270,16 @@ namespace AutomotivePartsAdministration.automotiveparts
                 entity.Property(e => e.CreatedBy)
                     .IsRequired()
                     .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.CubicCentimeters)
+                    .HasColumnType("varchar(20)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.CubicInches)
+                    .HasColumnType("varchar(20)")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -325,9 +292,9 @@ namespace AutomotivePartsAdministration.automotiveparts
                     .IsRequired()
                     .HasDefaultValueSql("'1'");
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.Liter)
                     .IsRequired()
-                    .HasColumnType("varchar(100)")
+                    .HasColumnType("varchar(20)")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -610,14 +577,14 @@ namespace AutomotivePartsAdministration.automotiveparts
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Description)
-                    .HasColumnType("varchar(200)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
                 entity.Property(e => e.IsActive)
                     .IsRequired()
                     .HasDefaultValueSql("'1'");
+
+                entity.Property(e => e.Name)
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
 
                 entity.Property(e => e.PartyId).HasColumnName("PartyID");
 
@@ -1553,12 +1520,6 @@ namespace AutomotivePartsAdministration.automotiveparts
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Cylinders)
-                    .IsRequired()
-                    .HasColumnType("varchar(30)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
                 entity.Property(e => e.Description)
                     .HasColumnType("varchar(200)")
                     .HasCharSet("utf8")
@@ -1742,13 +1703,10 @@ namespace AutomotivePartsAdministration.automotiveparts
             {
                 entity.ToTable("vehicleengine");
 
-                entity.HasIndex(e => e.EngineCubicCentimetersId)
-                    .HasName("cc_engine_fk");
-
                 entity.HasIndex(e => e.EngineCylinderArrangementId)
                     .HasName("cylinderarrangement_engine_fk");
 
-                entity.HasIndex(e => e.EngineLiterId)
+                entity.HasIndex(e => e.EngineSizeId)
                     .HasName("liter_engine_fk");
 
                 entity.Property(e => e.VehicleEngineId).HasColumnName("VehicleEngineID");
@@ -1768,11 +1726,9 @@ namespace AutomotivePartsAdministration.automotiveparts
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.EngineCubicCentimetersId).HasColumnName("EngineCubicCentimetersID");
-
                 entity.Property(e => e.EngineCylinderArrangementId).HasColumnName("EngineCylinderArrangementID");
 
-                entity.Property(e => e.EngineLiterId).HasColumnName("EngineLiterID");
+                entity.Property(e => e.EngineSizeId).HasColumnName("EngineSizeID");
 
                 entity.Property(e => e.IsActive)
                     .IsRequired()
@@ -1794,21 +1750,15 @@ namespace AutomotivePartsAdministration.automotiveparts
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.HasOne(d => d.EngineCubicCentimeters)
-                    .WithMany(p => p.Vehicleengine)
-                    .HasForeignKey(d => d.EngineCubicCentimetersId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("cc_engine_fk");
-
                 entity.HasOne(d => d.EngineCylinderArrangement)
                     .WithMany(p => p.Vehicleengine)
                     .HasForeignKey(d => d.EngineCylinderArrangementId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("cylinderarrangement_engine_fk");
 
-                entity.HasOne(d => d.EngineLiter)
+                entity.HasOne(d => d.EngineSize)
                     .WithMany(p => p.Vehicleengine)
-                    .HasForeignKey(d => d.EngineLiterId)
+                    .HasForeignKey(d => d.EngineSizeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("liter_engine_fk");
             });
@@ -1954,8 +1904,13 @@ namespace AutomotivePartsAdministration.automotiveparts
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
+                entity.Property(e => e.CurrentUnits)
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
                 entity.Property(e => e.Description)
-                    .HasColumnType("varchar(200)")
+                    .HasColumnType("varchar(400)")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -1963,14 +1918,9 @@ namespace AutomotivePartsAdministration.automotiveparts
                     .IsRequired()
                     .HasDefaultValueSql("'1'");
 
-                entity.Property(e => e.Kilometers)
-                    .IsRequired()
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.NextServiceDate).HasColumnType("datetime");
 
-                entity.Property(e => e.NextService)
-                    .IsRequired()
+                entity.Property(e => e.NextServiceUnits)
                     .HasColumnType("varchar(100)")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");

@@ -11,9 +11,9 @@ namespace AutomotivePartsAdministration.Controllers
 {
     public class EnginecylinderarrangementController : Controller
     {
-        private readonly automotiveparts2Context _context;
+        private readonly automotivepartsContext _context;
 
-        public EnginecylinderarrangementController(automotiveparts2Context context)
+        public EnginecylinderarrangementController(automotivepartsContext context)
         {
             _context = context;
         }

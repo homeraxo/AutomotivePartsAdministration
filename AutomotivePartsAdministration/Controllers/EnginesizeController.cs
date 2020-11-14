@@ -9,22 +9,22 @@ using AutomotivePartsAdministration.automotiveparts;
 
 namespace AutomotivePartsAdministration.Controllers
 {
-    public class EngineliterController : Controller
+    public class EnginesizeController : Controller
     {
-        private readonly automotiveparts2Context _context;
+        private readonly automotivepartsContext _context;
 
-        public EngineliterController(automotiveparts2Context context)
+        public EnginesizeController(automotivepartsContext context)
         {
             _context = context;
         }
 
-        // GET: Engineliter
+        // GET: Enginesize
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Engineliter.ToListAsync());
+            return View(await _context.Enginesize.ToListAsync());
         }
 
-        // GET: Engineliter/Details/5
+        // GET: Enginesize/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace AutomotivePartsAdministration.Controllers
                 return NotFound();
             }
 
-            var engineliter = await _context.Engineliter
-                .FirstOrDefaultAsync(m => m.EngineLiterId == id);
-            if (engineliter == null)
+            var enginesize = await _context.Enginesize
+                .FirstOrDefaultAsync(m => m.EngineSizeId == id);
+            if (enginesize == null)
             {
                 return NotFound();
             }
 
-            return View(engineliter);
+            return View(enginesize);
         }
 
-        // GET: Engineliter/Create
+        // GET: Enginesize/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Engineliter/Create
+        // POST: Enginesize/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EngineLiterId,Name,Description,IsActive,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Engineliter engineliter)
+        public async Task<IActionResult> Create([Bind("EngineSizeId,Liter,CubicCentimeters,CubicInches,Description,IsActive,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Enginesize enginesize)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(engineliter);
+                _context.Add(enginesize);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(engineliter);
+            return View(enginesize);
         }
 
-        // GET: Engineliter/Edit/5
+        // GET: Enginesize/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace AutomotivePartsAdministration.Controllers
                 return NotFound();
             }
 
-            var engineliter = await _context.Engineliter.FindAsync(id);
-            if (engineliter == null)
+            var enginesize = await _context.Enginesize.FindAsync(id);
+            if (enginesize == null)
             {
                 return NotFound();
             }
-            return View(engineliter);
+            return View(enginesize);
         }
 
-        // POST: Engineliter/Edit/5
+        // POST: Enginesize/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EngineLiterId,Name,Description,IsActive,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Engineliter engineliter)
+        public async Task<IActionResult> Edit(int id, [Bind("EngineSizeId,Liter,CubicCentimeters,CubicInches,Description,IsActive,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Enginesize enginesize)
         {
-            if (id != engineliter.EngineLiterId)
+            if (id != enginesize.EngineSizeId)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace AutomotivePartsAdministration.Controllers
             {
                 try
                 {
-                    _context.Update(engineliter);
+                    _context.Update(enginesize);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EngineliterExists(engineliter.EngineLiterId))
+                    if (!EnginesizeExists(enginesize.EngineSizeId))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace AutomotivePartsAdministration.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(engineliter);
+            return View(enginesize);
         }
 
-        // GET: Engineliter/Delete/5
+        // GET: Enginesize/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace AutomotivePartsAdministration.Controllers
                 return NotFound();
             }
 
-            var engineliter = await _context.Engineliter
-                .FirstOrDefaultAsync(m => m.EngineLiterId == id);
-            if (engineliter == null)
+            var enginesize = await _context.Enginesize
+                .FirstOrDefaultAsync(m => m.EngineSizeId == id);
+            if (enginesize == null)
             {
                 return NotFound();
             }
 
-            return View(engineliter);
+            return View(enginesize);
         }
 
-        // POST: Engineliter/Delete/5
+        // POST: Enginesize/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var engineliter = await _context.Engineliter.FindAsync(id);
-            _context.Engineliter.Remove(engineliter);
+            var enginesize = await _context.Enginesize.FindAsync(id);
+            _context.Enginesize.Remove(enginesize);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EngineliterExists(int id)
+        private bool EnginesizeExists(int id)
         {
-            return _context.Engineliter.Any(e => e.EngineLiterId == id);
+            return _context.Enginesize.Any(e => e.EngineSizeId == id);
         }
     }
 }

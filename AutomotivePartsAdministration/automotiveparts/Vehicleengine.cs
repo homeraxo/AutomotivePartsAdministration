@@ -15,16 +15,14 @@ namespace AutomotivePartsAdministration.automotiveparts
         public string Description { get; set; }
         public bool? IsActive { get; set; }
         public int EngineCylinderArrangementId { get; set; }
-        public int EngineLiterId { get; set; }
-        public int EngineCubicCentimetersId { get; set; }
+        public int EngineSizeId { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public string UpdatedBy { get; set; }
 
-        public virtual Enginecubiccentimeters EngineCubicCentimeters { get; set; }
         public virtual Enginecylinderarrangement EngineCylinderArrangement { get; set; }
-        public virtual Engineliter EngineLiter { get; set; }
+        public virtual Enginesize EngineSize { get; set; }
         public virtual ICollection<Vehicle> Vehicle { get; set; }
     }
 }

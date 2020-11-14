@@ -13,7 +13,6 @@ namespace AutomotivePartsAdministration.automotiveparts
 
         public int VehicleId { get; set; }
         public string Version { get; set; }
-        public string Cylinders { get; set; }
         public int BeginYear { get; set; }
         public int EndYear { get; set; }
         public string EngineOilCapacity { get; set; }

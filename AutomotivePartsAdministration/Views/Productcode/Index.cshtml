@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AutomotivePartsAdministration.automotiveparts.Engineliter>
+﻿@model IEnumerable<AutomotivePartsAdministration.automotiveparts.Productcode>
 
 @{
     ViewData["Title"] = "Index";
@@ -10,14 +10,11 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table-responsive-sm small">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsActive)
@@ -44,9 +41,6 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
@@ -62,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.UpdatedBy)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EngineLiterId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EngineLiterId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EngineLiterId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ProductCodeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductCodeId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductCodeId">Delete</a>
             </td>
         </tr>
 }
